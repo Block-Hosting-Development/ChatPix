@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ChatPix</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="ChatPix is a replit auth chat room that allows you to talk to your freinds and meet new ones.">
+        <meta name="author" content="Block Hosting">
+        <meta name="keywords" content="chatroom, chat, replit">
+        <meta property="og:image" content="images/replit-logo.png">
+        <link rel="icon" href="images/replit-logo.png" type="image/x-icon">
+        <meta property="og:image:width" content="600">
+        <meta property="og:image:height" content="400">
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <script src="https://replitcss.hecker40.repl.co/replit.js"></script>
+        <link href="https://replitcss.hecker40.repl.co/replit.css" rel="stylesheet" type="text/css"/>
+        <script src="https://cdn.socket.io/3.1.3/socket.io.min.js" integrity="sha384-cPwlPLvBTa3sKAgddT6krw0cJat7egBga3DJepJyrLl4Q9/5WLra3rrnMcyTyOnh" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.9.0/cdn/themes/light.css" />
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.9.0/cdn/shoelace-autoloader.js"></script>
+        
+
+
+    </head>
+    <body>
+    <nav class="navbar">
+      <a href="/" class="nav-logo"><img class="align-middle" src="images/replit-logo.png"/>ChatPix</a>
+      <ul class="nav-links">
+        <input type="checkbox" id="checkbox_toggle"/>
+        <label for="checkbox_toggle" class="hamburger">☰</label>
+        <div class="menu">
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/docs">Docs</a></li>
+          <li><a id="login-button">Login</a></li>
+          <li><a id="join-chat">Join as Guest</a></li>
+          <li><a class="btn btn-primary" href="https://replit.com/@hecker40/replitcss?v=1#index.html">Replit.css</a></li>
+        </div>
+      </ul>
+    </nav>
+
+    <div class="alert alert-primary">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill alert-icon" viewBox="0 0 16 16">
+        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+      </svg>This is not an offical Replit made product. This is just a fun project!
+    </div>
+
+
+        <div id="login-box">
+          <center>
+    <section class="hero">
+      <div class="hero-image">
+        <img src="images/replit-logo.png" />
+      </div>
+      <div class="hero-text">
+        <h1>Welcome to ChatPix!</h1>
+        <p>Made to let you talk to your bestie or make a new one!</p>
+        <p>The Ultimate Replt Chat!</p>
+      </div>
+    </section>
+          </center>
+    <div class="footer">
+      ChatPix - Made with <a href="https://replit.com/">Replit</a> - Using <a href="https://replit.com/@hecker40/replitcss">replit.css</a> - Version: Stable V1.2
+      <center><center><p id="has-loggedin" class="hidden"></p></center></center>
+    </div>
+        </div>
+      
+      <div id="chat-box" class="hidden box">
+      <div class="alert alert-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill alert-icon" viewBox="0 0 16 16">
+          <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+        </svg>Remember, we log messages! Beware!
+      </div>
+        <label class="switch">
+          <input type="checkbox" id="soundToggle" checked>
+          <span class="slider round"></span>
+        </label>
+        
+        
+          <div id="chat-messages" class="messages-box"></div>
+
+        <div class="chat-input-container">
+            <input type="text" width="50%" id="message-input" />
+            <button class="btn btn-teal" id="message-send" onclick="clearMessageInput()">
+                <div id="typing"></div>
+                <i class="fa fa-send"></i> Send Message
+            </button>
+            <a target="_blank" class="btn btn-primary" id="emoji-button">Emojji</a>
+
+
+            
+
+
+          
+      </div>
+
+        <script src="./chat.js"></script>
+    </body>
+</html>

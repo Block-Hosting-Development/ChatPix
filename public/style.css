@@ -1,0 +1,117 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.hidden {
+    display: none
+}
+
+.messages-box {
+    height: 400px;
+    width: 100%;
+    overflow-y: auto;
+}
+
+.box {
+    border: 1px solid black;
+    padding: 5%;
+}
+
+/* CSS for the footer */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333; /* You can change the background color */
+    color: white; /* You can change the text color */
+    text-align: center;
+    padding: 10px 0; /* Adjust padding as needed */
+    z-index: 999; /* Set a high z-index value to ensure the footer is on top of other content */
+}
+
+.chat-input-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* Align elements at the bottom */
+    margin-top: 10px; /* Add some space above the input and button */
+}
+
+/* Optional: Adjust the input width and button styles as needed */
+#message-input {
+    width: 70%; /* Adjust the width as needed */
+    padding: 5px;
+}
+
+#message-send {
+    width: 28%; /* Adjust the width as needed */
+    padding: 5px;
+}
+
+
+/* Add this CSS to style the online users bar */
+.online-users-bar {
+  width: 200px;
+  height: 100%;
+  position: fixed;
+  right: 0;
+  top: 0;
+  background-color: #f1f1f1;
+  padding: 10px;
+  overflow: auto;
+  box-sizing: border-box;
+}
+
+.p-tag-a a {
+    color: white; /* black color that paragraphs typically have */
+    text-decoration: none; /* remove underline */
+    display: block; /* make it block element like p */
+    margin: 1em 0; /* add some margin like p */
+}
+
+.emoji {
+  height: 20px;
+  width: auto;
+}
+
+.link-embed {
+  box-shadow: 0 1px 3px rgba(0,0,0,.15);
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  text-decoration: none;
+  color: inherit;
+  background: #000000;
+  max-width: 300px;
+  max-width: 70%;
+}
+
+.link-embed-url {
+  padding: 10px;
+  background: #000000;
+  border-bottom: 1px solid #dedede;
+  font-size: 13px;
+  color: #5a57ff;
+}
+
+.link-embed-content {
+  padding: 10px;
+}
+
+.link-embed-title {
+  font-size: 20px;
+  color: #5a57ff;
+  margin-bottom: 5px;
+}
+
+.link-embed-description {
+  color: #ffffff;
+  font-size: 15px;
+}
+
+.link-embed-image img {
+  max-width: 100%;
+  height: auto;
+}

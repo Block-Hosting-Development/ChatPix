@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ChatPix</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="ChatPix is a replit auth chat room that allows you to talk to your freinds and meet new ones.">
+        <meta name="author" content="Block Hosting">
+        <meta name="keywords" content="chatroom, chat, replit">
+        <meta property="og:image" content="images/replit-logo.png">
+        <link rel="icon" href="images/replit-logo.png" type="image/x-icon">
+        <meta property="og:image:width" content="600">
+        <meta property="og:image:height" content="400">
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <script src="https://replitcss.hecker40.repl.co/replit.js"></script>
+        <link href="https://replitcss.hecker40.repl.co/replit.css" rel="stylesheet" type="text/css"/>
+        <script src="https://cdn.socket.io/3.1.3/socket.io.min.js" integrity="sha384-cPwlPLvBTa3sKAgddT6krw0cJat7egBga3DJepJyrLl4Q9/5WLra3rrnMcyTyOnh" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <header>
+    <nav class="navbar">
+      <a href="/" class="nav-logo"><img class="align-middle" src="images/replit-logo.png"/>ChatPix</a>
+      <ul class="nav-links">
+        <input type="checkbox" id="checkbox_toggle"/>
+        <label for="checkbox_toggle" class="hamburger">☰</label>
+        <div class="menu">
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/docs">Docs</a></li>
+          <li><a class="btn btn-primary" href="https://replit.com/@hecker40/replitcss?v=1#index.html">Replit.css</a></li>
+        </div>
+      </ul>
+    </nav>
+        </header>
+      <center>
+        <main>
+            <section>
+                <h1>About Our Chat Application</h1>
+                <p>We are a small chat app that you can use to talk to your freinds or meet new ones.</p>
+            </section>
+            <section>
+                <h2>Our Team</h2>
+                <p>Our team is trained and will be online whenever they can. Please recpect our staff team.</p>
+                <h3>How to know if someone is staff?</h3>
+                <p>If the person has this next to there name:</p>
+                <ul>
+                    <li><span class="badge badge-teal">Moderator</span></li>
+                    <li><span class="badge badge-orange">Admin</span></li>
+                    <li><span class="badge badge-red">Owner</span></li>
+                </ul>
+            </section>
+            <section>
+                <h2>Contact Us</h2>
+                <p>You can join our <a href="https://discord.gg/8fYtHQrvjN"> discord server</a> here!</p>
+            </section>
+        </main>
+    <div class="footer">
+      ChatPix - Made with <a href="https://replit.com/">Replit</a> - Using <a href="https://replit.com/@hecker40/replitcss">replit.css</a> - Version: Stable V1.2
+      <center><center><p id="has-loggedin" class="hidden"></p></center></center>
+    </div>
+    </body>
+</html>

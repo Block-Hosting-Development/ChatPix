@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      div#emojis img {
+        border: 2px solid gray;
+        border-radius: 5px;
+        padding: 5px;
+        margin: 5px;
+        width: 20px;
+        height: 20px;
+      }
+      
+      div#emojis div {
+        position: relative;
+        margin-bottom: 30px; /* Added to create space */
+      }
+      div#emojis div p {
+        display: none;
+        position: absolute;
+        bottom: -20px; /* Adjusted to put the name under the emoji */
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 2px 5px;
+        background: white;
+        color: black;
+        border-radius: 5px;
+        font-size: 10px;
+        text-align: center;
+      }
+      div#emojis div:hover p {
+        display: block;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #1a1a1d;
+        font-family: Arial, sans-serif;
+        color: white;
+      }
+      #emojis {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        width: 300px;
+      }
+    </style>
+    <script>
+      const copyToClipboard = str => {
+        const el = document.createElement('textarea');
+        el.value = `:${str}:`;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+      };
+    </script>
+  </head>
+  <body>
+    <center>
+      <h1>Emojis</h1>
+      <p>How to Use: You can click on the emojji of choice and it will copy to your clipboard and then close the page. Then you can paste it into your chat and it will work.</p>
+    </center>
+    <div id="emojis"></div>
+    <script>
+      fetch('/emojis')
+          .then(response => response.json())
+          .then(emojis => {
+              const emojisDiv = document.getElementById('emojis');
+              emojis.forEach(emoji => {
+                  const img = document.createElement('img');
+                  img.src = 'images/emojis/' + emoji;
+                  img.onclick = function() {
+                      copyToClipboard(emoji.split('.').slice(0, -1).join('.'));
+                      setTimeout(function() {
+                        window.close();
+                      }, 100);
+                  }
+
+                  const emojiName = document.createElement('p');
+                  emojiName.innerText = emoji.split('.').slice(0, -1).join('.'); 
+                  
+                  const wrapper = document.createElement('div');
+                  wrapper.appendChild(img);
+                  wrapper.appendChild(emojiName);
+                  
+                  emojisDiv.appendChild(wrapper);
+              });
+          });   
+    </script>
+  </body>
+</html>

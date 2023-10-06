@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Documentation - Emojis Endpoint</title>
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+    }
+    .row {
+      display: flex;
+      width: 100%;
+      height: 100vh; /* Set the height to 100vh */
+    }
+    .left {
+      flex: 35%;
+      padding: 15px 0;
+      background-color: #bbb;
+    }
+    .left h2 {
+      padding-left: 8px;
+    }
+    .right {
+      flex: 65%;
+      padding: 15px;
+      background-color: #ddd;
+    }
+    #mySearch {
+      width: 100%;
+      font-size: 18px;
+      padding: 11px;
+      border: 1px solid #ddd;
+    }
+    #myMenu {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    #myMenu li a {
+      padding: 12px;
+      text-decoration: none;
+      color: black;
+      display: block;
+    }
+    #myMenu li a:hover {
+      background-color: #eee;
+    }
+  </style>
+</head>
+<body>
+
+<div class="row">
+  <div class="left">
+    <h2>Menu</h2>
+    <input type="text" id="mySearch" onkeyup="search()" placeholder="Search.." title="Type in a category">
+    <ul id="myMenu">
+      <li><a href="/docs">Docs Home</a></li>
+      <li><a href="/docs/emojji">Emojji Docs</a></li>
+    </ul>
+  </div>
+
+  <div class="right">
+    <h2>ChatPix Documention</h2>
+    <header>
+      <h1>API Documentation - Emojis Endpoint</h1>
+    </header>
+    <main>
+      <section>
+        <h2>/emojji Endpoint</h2>
+        <p>This endpoint allows you to get a specific emojji image by name.</p>
+
+        <h3>Usage</h3>
+        <pre><code>GET /emojji/:name</code></pre>
+
+        <h3>Parameters</h3>
+        <p><code>:name</code> - The name of the emojji to retrieve. Example: <code>emoji1</code></p>
+
+        <h3>Response</h3>
+        <p>Returns the emojji image file if it exists or a 404 error status if the emojji does not exist.</p>
+
+        <h3>Example Request</h3>
+        <pre><code>
+import requests
+
+# Replace `:name` with the desired emojji name
+emoji_name = "emoji1"
+
+# Send a GET request to the /emojji/:name endpoint
+response = requests.get(f"https://chatpix.chat/emojji/{emoji_name}")
+
+# Check the response status code and save the image file if successful
+if response.status_code == 200:
+    with open(f"{emoji_name}.png", "wb") as file:
+        file.write(response.content)
+else:
+    print("Request failed with status code:", response.status_code)
+        </code></pre>
+
+        <h3>Example Response</h3>
+        <p>An image file of the requested emojji.</p>
+      </section>
+      <section>
+        <h2>/emojji/random Endpoint</h2>
+        <p>This endpoint allows you to get a random emojji image.</p>
+
+        <h3>Usage</h3>
+        <pre><code>GET /emojji/random</code></pre>
+
+        <h3>Response</h3>
+        <p>Returns a random emojji image file from the available emojjis.</p>
+
+        <h3>Example Request</h3>
+        <pre><code>
+import requests
+
+# Send a GET request to the /emojji/random endpoint
+response = requests.get("https://chatpix.chat/emojji/random")
+
+# Check the response status code and save the image file if successful
+if response.status_code == 200:
+    with open("random_emoji.png", "wb") as file:
+        file.write(response.content)
+else:
+    print("Request failed with status code:", response.status_code)
+        </code></pre>
+
+        <h3>Example Response</h3>
+        <p>An image file of a random emojji.</p>
+      </section>
+    </main>
+  </div>
+</div>
+
+<script>
+function search() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("mySearch");
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("myMenu");
+  li = ul.getElementsByTagName("li");
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByTagName("a")[0];
+    if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+</script>
+
+</body>
+</html>
