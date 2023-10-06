@@ -1,7 +1,4 @@
 # ChatPix
-
-## Description
-
 This project aims to give everyone the ability to chat with everyone. I mean our slogen is "Made to let you talk to your bestie or make a new one!".
 
 ## Features
