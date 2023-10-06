@@ -251,13 +251,16 @@ function generateRandomString(length) {
   return result;
 }
 
+/*
 function sendMessage(user, message) {
   io.emit("update", {
     sender: user,
     message: message.replace(/<[^>]*>?/gm, ""),
   });
 }
+*/
 
+/*
 app.get("/api/create-bot", (req, res) => {
   const botName = req.query.botname;
   if (!botName) {
@@ -274,7 +277,9 @@ app.get("/api/create-bot", (req, res) => {
   fs.writeFileSync("bots.json", JSON.stringify(bots));
   res.send(token);
 });
+*/
 
+/*
 app.get("/api/send-message", (req, res) => {
   const { token, message } = req.query;
   if (!token || !message) {
@@ -301,7 +306,9 @@ app.get("/api/send-message", (req, res) => {
     return res.sendStatus(500);
   }
 });
+*/
 
+/*
 app.delete("/api/delete-bot", (req, res) => {
   const { token } = req.query;
   if (!token) {
@@ -323,7 +330,10 @@ app.delete("/api/delete-bot", (req, res) => {
     return res.sendStatus(500);
   }
 });
+*/
 
+/*
 app.get("/api/example-codes", (req, res) => {
   return "&0Black &1Dark Blue &2Dark Green &3Dark Aqua &4Dark Red &5Dark Purple &6Gold &7Gray &8Dark Gray &9Blue &aGreen &bAqua &cRed &dLight Purple &eYellow &fWhite &lBold &mStrikethrough &nUnderline &oItalic &rReset";
 });
+*/
