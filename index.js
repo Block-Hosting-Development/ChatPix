@@ -11,7 +11,7 @@ const server = app.listen(process.env.PORT || "80", () => {
   console.log("Server Started!");
 });
 const discordWebhookURL =
-  "https://discord.com/api/webhooks/1157741009988497558/_lFWsHfAFdxvhxMicgdonQSovLTiKa_7zm3pDi5DuzmvCcaR46WVaJhI_Cv1G2a8Q5Av";
+  "Not Todat (Also the Webhook has been deleted!)";
 const io = socketio(server);
 
 app.get("/emojis", (req, res) => {
