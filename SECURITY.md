@@ -8,8 +8,6 @@
 
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
+Use this section to tell people how to report a vulnerability. You can also go to our discord server (https://discord.gg/2ZExt228Vz ) and open a ticket.
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+We anounce in our discord server Security Policy updates.
