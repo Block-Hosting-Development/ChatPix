@@ -204,6 +204,7 @@ io.on("connection", (socket) => {
   });
 });
 
+/*
 function sendLogsToDiscordWebhook() {
   if (logBuffer.length > 0) {
     const embed = {
@@ -225,8 +226,11 @@ function sendLogsToDiscordWebhook() {
       });
   }
 }
+*/
 
+/*
 setInterval(sendLogsToDiscordWebhook, logInterval);
+*/
 
 function getTimestamp() {
   const now = new Date();
