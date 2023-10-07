@@ -120,9 +120,11 @@ app.get("/docs/emojji", (req, res) => {
   res.sendFile(__dirname + "/public/docs/emojji.html");
 });
 
+/*
 app.get("*", (req, res) => {
   res.status(404).sendFile(__dirname + "/public/404.html");
 });
+*/
 
 app.get("/emojji/:name", (req, res) => {
   const emojiName = req.params.name;
