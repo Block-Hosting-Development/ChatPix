@@ -14,45 +14,53 @@ const discordWebhookURL =
   "Not Todat (Also the Webhook has been deleted!)";
 const io = socketio(server);
 
-const commitsCache = loadCommitsCache();
+const commitsCacheFile = "commits-cache.json";
 
-app.get("/github-commits", (req, res) => {
-  const cacheKey = "github-commits-cache";
-  if (commitsCache[cacheKey]) {
-    const cacheData = commitsCache[cacheKey];
-    if (Date.now() - cacheData.timestamp < 60 * 60 * 1000) {
-      res.json(cacheData.data);
-      return;
-    }
-  }
-  axios.get('https://api.github.com/repos/Block-Hosting-Development/ChatPix/commits', {
-    headers: {
-      'User-Agent': 'https://chatpix.chat/'
-    }
-  }).then(response => {
-    const commits = response.data;
-    const cacheData = {
-      timestamp: Date.now(),
-      data: commits
-    };
-    commitsCache[cacheKey] = cacheData;
-    saveCommitsCache();
-    res.json(commits);
-  }).catch(error => {
-    console.error(error);
-    res.status(500).json({ message: 'Error fetching Github commits' });
-  });
-});
-function saveCommitsCache() {
-  fs.writeFileSync("commits-cache.json", JSON.stringify(commitsCache));
-}
 function loadCommitsCache() {
   try {
-    const fileData = fs.readFileSync("commits-cache.json");
+    const fileData = fs.readFileSync(commitsCacheFile);
     return JSON.parse(fileData);
   } catch (err) {
     return {};
   }
+}
+
+app.get("/github-commits", (req, res) => {
+  const commitsCache = loadCommitsCache();
+  const cacheKey = "github-commits-cache";
+  if (commitsCache[cacheKey]) {
+    const cacheData = commitsCache[cacheKey];
+    const lastPulled = cacheData.timestamp;
+    const oneDay = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
+    if (Date.now() - lastPulled < oneDay) {
+      res.json(cacheData.data);
+      return;
+    }
+  }
+  axios
+    .get('https://api.github.com/repos/Block-Hosting-Development/ChatPix/commits', {
+      headers: {
+        'User-Agent': 'https://chatpix.chat/'
+      }
+    })
+    .then(response => {
+      const commits = response.data;
+      const cacheData = {
+        timestamp: Date.now(),
+        data: commits
+      };
+      commitsCache[cacheKey] = cacheData;
+      saveCommitsCache(commitsCache);
+      res.json(commits);
+    })
+    .catch(error => {
+      console.error(error);
+      res.status(500).json({ message: 'Error fetching Github commits' });
+    });
+});
+
+function saveCommitsCache(cache) {
+  fs.writeFileSync(commitsCacheFile, JSON.stringify(cache));
 }
 
 app.get("/emojis", (req, res) => {

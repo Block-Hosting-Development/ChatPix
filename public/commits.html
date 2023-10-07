@@ -31,6 +31,9 @@
     <div class="container">
         <h1>Recent Commits</h1>
         <p>This could take up to a day to update!</p>
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search..." onkeyup="searchCommits()">
+        </div>
         <div id="commits-list"></div>
     </div>
 
@@ -51,7 +54,7 @@
                     const commitInfo = document.createElement('div');
                     commitInfo.classList.add('commit-info');
                     const author = document.createElement('h3');
-                    author.innerText = commit.commit.author.name;
+                    author.innerHTML = `<a href="https://github.com/${commit.author.login}">${commit.author.login}</a>`;
                     const message = document.createElement('p');
                     message.innerText = commit.commit.message;
                     const date = document.createElement('p');
@@ -66,11 +69,24 @@
                 });
             });
 
-            function getReadableDate(isoDateString) {
-                const date = new Date(isoDateString);
-                const options = { year: 'numeric', month: 'long', day: 'numeric' };
-                return date.toLocaleDateString('en-US', options);
-            }
+        function getReadableDate(isoDateString) {
+            const date = new Date(isoDateString);
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return date.toLocaleDateString('en-US', options);
+        }
+
+        function searchCommits() {
+            const input = document.getElementById('search-input').value.toLowerCase();
+            const commitItems = document.getElementsByClassName('commit-item');
+            Array.from(commitItems).forEach(commitItem => {
+                const author = commitItem.getElementsByTagName('h3')[0];
+                if (author.innerText.toLowerCase().indexOf(input) > -1) {
+                    commitItem.style.display = '';
+                } else {
+                    commitItem.style.display = 'none';
+                }
+            });
+        }
     </script>
 </body>
 </html>
