@@ -191,9 +191,10 @@ io.on("connection", (socket) => {
   // Update the "send" event listener as follows:
   socket.on("send", (message) => {
     if (username !== "Guest") {
+      const antiXSS = message.replace("<", "&lt;").replace(">", "&gt;");
       io.emit("update", {
         sender: username,
-        message: message.replace(/<[^>]*>?/gm, ""),
+        message: antiXSS
       });
       logEvent(`${getTimestamp()} ${username}: ${message}`);
     }
