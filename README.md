@@ -1,5 +1,5 @@
 # ChatPix
-This project aims to give everyone the ability to chat with everyone. I mean our slogen is "Made to let you talk to your bestie or make a new one!".
+This project aims to give everyone the ability to chat with everyone. I mean our slogan is "Made to let you talk to your bestie or make a new one!".
 
 ## Features
 
@@ -10,8 +10,8 @@ This project aims to give everyone the ability to chat with everyone. I mean our
 
 Contributions are welcome! Please follow these guidelines:
 
-- Do not add anything that would be considered a virus or wrong, I get that we get to choose what is allowed in and not but don't waste my time (feel like this one is just implide but still)
-- If you are adding anything, make sure to think if what you have added is something that could be helpful or is it just a joke.
+- Do not add anything that would be considered malicious, We choose what is allowed and this wastes our time (feel like this one is implied, but still)
+- If you are adding anything, make sure to think if what you have added is something that could be helpful.
 
 ## License
 
