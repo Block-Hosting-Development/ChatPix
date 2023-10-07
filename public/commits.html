@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recent Commits</title>
+    <meta name="description" content="ChatPix is a replit auth chat room that allows you to talk to your freinds and meet new ones.">
+    <meta name="author" content="Block Hosting">
+    <meta name="keywords" content="chatroom, chat, replit">
+    <meta property="og:image" content="images/replit-logo.png">
+    <link rel="icon" href="images/replit-logo.png" type="image/x-icon">
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="400">
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <link href="https://replitcss.hecker40.repl.co/replit.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <nav class="navbar">
+      <a href="/" class="nav-logo"><img class="align-middle" src="images/replit-logo.png"/>ChatPix</a>
+      <ul class="nav-links">
+        <input type="checkbox" id="checkbox_toggle"/>
+        <label for="checkbox_toggle" class="hamburger">☰</label>
+        <div class="menu">
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="/updates">Github Updates</a></li>
+          <li><a id="login-button">Login</a></li>
+          <li><a id="join-chat">Join as Guest</a></li>
+          <li><a class="btn btn-primary" href="https://replit.com/@hecker40/replitcss?v=1#index.html">Replit.css</a></li>
+        </div>
+      </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Recent Commits</h1>
+        <div id="commits-list"></div>
+    </div>
+
+    <script>
+        fetch('/github-commits')
+            .then(response => response.json())
+            .then(commits => {
+                const commitsList = document.getElementById('commits-list');
+                commits.sort((a, b) => {
+                    const dateA = new Date(a.commit.author.date);
+                    const dateB = new Date(b.commit.author.date);
+                    return dateB - dateA;
+                });
+
+                commits.forEach(commit => {
+                    const commitItem = document.createElement('div');
+                    commitItem.classList.add('commit-item');
+                    const commitInfo = document.createElement('div');
+                    commitInfo.classList.add('commit-info');
+                    const author = document.createElement('h3');
+                    author.innerText = commit.commit.author.name;
+                    const message = document.createElement('p');
+                    message.innerText = commit.commit.message;
+                    const date = document.createElement('p');
+                    date.classList.add('commit-date');
+                    date.innerText = getReadableDate(commit.commit.author.date);
+                    
+                    commitInfo.appendChild(author);
+                    commitInfo.appendChild(message);
+                    commitItem.appendChild(commitInfo);
+                    commitItem.appendChild(date);
+                    commitsList.appendChild(commitItem);
+                });
+            });
+
+            function getReadableDate(isoDateString) {
+                const date = new Date(isoDateString);
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                return date.toLocaleDateString('en-US', options);
+            }
+    </script>
+</body>
+</html>

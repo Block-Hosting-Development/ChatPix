@@ -1,8 +1,8 @@
 // test commit (means nothing)
 
 const express = require("express");
-const socketio = require("socket.io");
 const axios = require("axios");
+const socketio = require("socket.io");
 const fs = require("fs");
 const fetch = require("node-fetch");
 const cheerio = require("cheerio");
@@ -15,6 +15,47 @@ const server = app.listen(process.env.PORT || "80", () => {
 const discordWebhookURL =
   "Not Todat (Also the Webhook has been deleted!)";
 const io = socketio(server);
+
+const commitsCache = loadCommitsCache();
+
+app.get("/github-commits", (req, res) => {
+  const cacheKey = "github-commits-cache";
+  if (commitsCache[cacheKey]) {
+    const cacheData = commitsCache[cacheKey];
+    if (Date.now() - cacheData.timestamp < 60 * 60 * 1000) {
+      res.json(cacheData.data);
+      return;
+    }
+  }
+  axios.get('https://api.github.com/repos/Block-Hosting-Development/ChatPix/commits', {
+    headers: {
+      'User-Agent': 'https://chatpix.chat/'
+    }
+  }).then(response => {
+    const commits = response.data;
+    const cacheData = {
+      timestamp: Date.now(),
+      data: commits
+    };
+    commitsCache[cacheKey] = cacheData;
+    saveCommitsCache();
+    res.json(commits);
+  }).catch(error => {
+    console.error(error);
+    res.status(500).json({ message: 'Error fetching Github commits' });
+  });
+});
+function saveCommitsCache() {
+  fs.writeFileSync("commits-cache.json", JSON.stringify(commitsCache));
+}
+function loadCommitsCache() {
+  try {
+    const fileData = fs.readFileSync("commits-cache.json");
+    return JSON.parse(fileData);
+  } catch (err) {
+    return {};
+  }
+}
 
 app.get("/emojis", (req, res) => {
   fs.readdir("./public/images/emojis", (err, files) => {
@@ -120,6 +161,10 @@ app.get("/docs", (req, res) => {
 
 app.get("/docs/emojji", (req, res) => {
   res.sendFile(__dirname + "/public/docs/emojji.html");
+});
+
+app.get("/updates", (req, res) => {
+  res.sendFile(__dirname + "/public/commits.html");
 });
 
 /*
