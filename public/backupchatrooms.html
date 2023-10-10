@@ -1,0 +1,83 @@
+<!-- public/backupchatrooms.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Backup Chatrooms</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ChatPix is a replit auth chat room that allows you to talk to your friends and meet new ones.">
+  <meta name="author" content="Block Hosting">
+  <meta name="keywords" content="chatroom, chat, replit">
+  <meta property="og:image" content="images/replit-logo.png">
+  <link rel="icon" href="images/replit-logo.png" type="image/x-icon">
+  <meta property="og:image:width" content="600">
+  <meta property="og:image:height" content="400">
+  <link rel="stylesheet" type="text/css" href="style.css"/>
+  <script src="https://replitcss.hecker40.repl.co/replit.js"></script>
+  <link href="https://replitcss.hecker40.repl.co/replit.css" rel="stylesheet" type="text/css"/>
+  <script src="https://cdn.socket.io/3.1.3/socket.io.min.js" integrity="sha384-cPwlPLvBTa3sKAgddT6krw0cJat7egBga3DJepJyrLl4Q9/5WLra3rrnMcyTyOnh" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.9.0/cdn/themes/light.css" />
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.9.0/cdn/shoelace-autoloader.js"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/" class="nav-logo">
+      <img class="align-middle" src="images/replit-logo.png"/>ChatPix
+    </a>
+    <ul class="nav-links">
+      <input type="checkbox" id="checkbox_toggle"/>
+      <label for="checkbox_toggle" class="hamburger">☰</label>
+      <div class="menu">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li class="nav-dropdown">
+          <a href="/docs" class="dropdown-link">Docs</a>
+          <ul class="dropdown">
+            <li><a href="/docs">Get Started</a></li>
+            <li><a href="/docs/emojji">Emojji's</a></li>
+          </ul>
+        </li>
+        <li class="nav-dropdown">
+          <a href="#" class="dropdown-link">Other</a>
+          <ul class="dropdown">
+            <li><a href="/updates">Github Updates</a></li>
+            <li><a href="/backupchatrooms">Backup Chatrooms</a></li>
+          </ul>
+        </li>
+        <li><a class="btn btn-primary" href="https://replit.com/@hecker40/replitcss?v=1#index.html">Replit.css</a></li>
+      </div>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h1>Backup Chatrooms</h1>
+    <ul class="chatroom-list">
+      <li>
+        <div class="chatroom">
+          <h3 class="chatroom-title">Main Server</h3>
+          <p class="chatroom-description"><a href="https://chatpix.chat/">Click Here</a> to visit the site.</p>
+        </div>
+      </li>
+      <!-- Add more chatrooms here -->
+    </ul>
+  </div>
+
+  <div class="footer">
+    <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">
+      <a property="dct:title" rel="cc:attributionURL" href="https://chatpix.chat/">ChatPix</a> by 
+      <span property="cc:attributionName">Block Hosting</span> is licensed under 
+      <a href="http://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">
+        CC BY-NC-ND 4.0
+        <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1">
+        <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1">
+        <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1">
+        <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nd.svg?ref=chooser-v1">
+      </a>
+    </p>
+    <div><p id="has-loggedin" class="hidden"></p></div>
+  </div>
+  
+</body>
+</html>

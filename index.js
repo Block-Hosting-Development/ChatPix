@@ -310,16 +310,16 @@ function generateRandomString(length) {
   return result;
 }
 
-/*
+
 function sendMessage(user, message) {
   io.emit("update", {
     sender: user,
     message: message.replace(/<[^>]*>?/gm, ""),
   });
 }
-*/
 
-/*
+
+
 app.get("/api/create-bot", (req, res) => {
   const botName = req.query.botname;
   if (!botName) {
@@ -336,9 +336,8 @@ app.get("/api/create-bot", (req, res) => {
   fs.writeFileSync("bots.json", JSON.stringify(bots));
   res.send(token);
 });
-*/
 
-/*
+
 app.get("/api/send-message", (req, res) => {
   const { token, message } = req.query;
   if (!token || !message) {
@@ -365,31 +364,6 @@ app.get("/api/send-message", (req, res) => {
     return res.sendStatus(500);
   }
 });
-*/
-
-/*
-app.delete("/api/delete-bot", (req, res) => {
-  const { token } = req.query;
-  if (!token) {
-    return res.sendStatus(400);
-  }
-  try {
-    let bots = JSON.parse(fs.readFileSync("bots.json", "utf8"));
-
-    let index = bots.findIndex((bot) => bot.token == token);
-
-    if (index === -1) {
-      return res.sendStatus(404);
-    }
-    bots.splice(index, 1);
-    fs.writeFileSync("bots.json", JSON.stringify(bots));
-    res.sendStatus(200);
-  } catch (error) {
-    console.error("Error reading or parsing bots.json:", error);
-    return res.sendStatus(500);
-  }
-});
-*/
 
 /*
 app.get("/api/example-codes", (req, res) => {

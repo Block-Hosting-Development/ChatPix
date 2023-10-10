@@ -18,20 +18,34 @@
     </head>
     <body>
         <header>
-    <nav class="navbar">
-      <a href="/" class="nav-logo"><img class="align-middle" src="images/replit-logo.png"/>ChatPix</a>
-      <ul class="nav-links">
-        <input type="checkbox" id="checkbox_toggle"/>
-        <label for="checkbox_toggle" class="hamburger">☰</label>
-        <div class="menu">
-          <li><a href="/">Home</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/docs">Docs</a></li>
-          <li><a href="/updates">Github Updates</a></li>
-          <li><a class="btn btn-primary" href="https://replit.com/@hecker40/replitcss?v=1#index.html">Replit.css</a></li>
-        </div>
-      </ul>
-    </nav>
+  <nav class="navbar">
+    <a href="/" class="nav-logo">
+      <img class="align-middle" src="images/replit-logo.png"/>ChatPix
+    </a>
+    <ul class="nav-links">
+      <input type="checkbox" id="checkbox_toggle"/>
+      <label for="checkbox_toggle" class="hamburger">☰</label>
+      <div class="menu">
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About</a></li>
+        <li class="nav-dropdown">
+          <a href="/docs" class="dropdown-link">Docs</a>
+          <ul class="dropdown">
+            <li><a href="/docs">Get Started</a></li>
+            <li><a href="/docs/emojji">Emojji's</a></li>
+          </ul>
+        </li>
+        <li class="nav-dropdown">
+          <a href="#" class="dropdown-link">Other</a>
+          <ul class="dropdown">
+            <li><a href="/updates">Github Updates</a></li>
+            <li><a href="/backupchatrooms">Backup Chatrooms</a></li>
+          </ul>
+        </li>
+        <li><a class="btn btn-primary" href="https://replit.com/@hecker40/replitcss?v=1#index.html">Replit.css</a></li>
+      </div>
+    </ul>
+  </nav>
         </header>
       <center>
         <main>
