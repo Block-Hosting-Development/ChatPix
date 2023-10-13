@@ -1,10 +1,13 @@
+# No Longer Maintaned
+This project is no longer maintaned and will not be getting anymore updates for the forseable future.
+
 # ChatPix
 This project aims to give everyone the ability to chat with everyone. I mean our slogan is "Made to let you talk to your bestie or make a new one!".
+
 
 ## Features
 
 - Roles and Ranks
-- 24/7 Online
 
 ## Contributing
 
